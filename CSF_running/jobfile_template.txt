@@ -1,0 +1,11 @@
+#!/bin/bash --login
+#$ -cwd
+#$ -l nvidia_v100=1
+
+echo "Job is using $NGPUS GPU(s) with ID(s) $CUDA_VISIBLE_DEVICES and $NSLOTS CPU core(s)"
+
+module load libs/cuda
+module load apps/binapps/tensorflow/2.8.0-39-gpu
+module load apps/binapps/anaconda3/2022.10
+
+python experiment.py
