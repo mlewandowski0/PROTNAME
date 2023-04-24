@@ -45,23 +45,22 @@ def get_from_uniprot(reviewed : None, format="tsv", data_from_organism = None, f
     with open(filepath_to_save, "w") as f:
         f.write("\t".join(fields) + "\n")
         i = 0
+        buf = []
         for batch, total in get_batch(url):
             if max_results == -1:
                 max_results = total
 
             data = batch.text.splitlines()[1:]
-            buf = []
             
             for line in data:
                 # preprocess
-                buf.append(preprocessing_identity(line))
+                buf.append(preprocess_function(line))
             
-            f.write("\n".join(buf))
-
             i += len(data)
             print(f'{i} / {max_results}')
 
             if i >= int(max_results):
                 break
+        f.write("\n".join(buf))
 
 get_from_uniprot(reviewed=True, data_from_organism=9606, fields=["sequence","protein_name"],max_results=-1)
