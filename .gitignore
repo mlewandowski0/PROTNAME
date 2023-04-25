@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+data_collection/datasets/*
 
 # C extensions
 *.so
@@ -127,3 +128,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+data_collection/dataset/proteins_large.tsv
+data_collection/dataset/proteins_large_annot4.tsv
+data_collection/dataset/human_proteins2.tsv
+data_collection/dataset/human_proteins.tsv
+data_collection/dataset/all_proteins.tsv
