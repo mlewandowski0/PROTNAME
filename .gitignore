@@ -134,3 +134,7 @@ data_collection/dataset/human_proteins2.tsv
 data_collection/dataset/human_proteins.tsv
 data_collection/dataset/all_proteins.tsv
 data_collection/dataset/all_proteins.tsv~
+prototyping/all_proteins.tsv
+prototyping/human_proteins.tsv
+prototyping/names.txt
+prototyping/Sequences.txt
