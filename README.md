@@ -1,7 +1,8 @@
 # PROTNAME
 
-## Structure 
+![](imgs/diagram.png)
 
+## Structure 
 | folder  | description  |
 |---|---|
 | csf  | folder containing python script which ran the protCNN and other architectures on CSF with sample jobfile  |
@@ -27,7 +28,7 @@ folder containing all the data collected during the project (PFAM.zip and data c
 
 ## Issues
 - data imbalance : for PFAM dataset the data is very unbalanced, having a long tail distribution, which can be seen of figure [1]. This has been addressed by focusing on 1000 most common protein families, which we believed still represent good results (40% of whole data) and we did not have resources to train larger models.
-![](fig/dataimbalance.png) The 1000 most common proteins dataset is still inbalanced however, it's much better than the above figure (around 5000 clases have less than or equal 10 samples). This is simillar approach to protCNN and protTNN approaches (taking only the most popular classes).
+![](imgs/dataimbalance.png) The 1000 most common proteins dataset is still inbalanced however, it's much better than the above figure (around 5000 clases have less than or equal 10 samples). This is simillar approach to protCNN and protTNN approaches (taking only the most popular classes).
 - data reliability : PFAM dataset has been created by authors of the protCNN paper therefore we assumed the data was reliable. For Uniprot data, for training of T5 model we trained only on a small protion of human proteins that were annotated by human specialists (~20k). The T5 tokenizer for protein names has been trained on much larger protion (~700k proteins) that had an annotation score 4 or 5 (the best annotation score and almost the best). We believed that by that, we operate on well labeled data, that would form a good dataset for tokenizer and training. This could be much extended but it would require much more resources. For all the created models in pytorch/HF we used a validation split 0.8. 
 - For language modelling we followed simillar approach, and focused on masking only 50 most common proteins (due to long time required for masking). 
 
@@ -41,7 +42,7 @@ folder containing all the data collected during the project (PFAM.zip and data c
 
 ## protCNN
 ProtCNN
-![](fig/PROTCNN1.png)
+![](imgs/PROTCNN1.png)
 
 # Evaluation 
 For trained models we used the 80/10/10 train/val/test split. For the classification task, the accuracy and F1 score has been recorded (F1 score with "average" weighting option). For Masked Language modelling we report the accuracy/the percentage of the masked amnioacids that the model got right. The protein to name evaluation is difficult as it requires extensive knowledge about biology and sometimes about certain time/properties of the sequence, therefore we looked only for exact match.
@@ -50,7 +51,7 @@ For trained models we used the 80/10/10 train/val/test split. For the classifica
 ## Classification 
 the models are hosted on hugging face. an example of interaction can be found here : 
 https://huggingface.co/mlewand/PROTBERT-tiny?text=RIGIMTSGGDAPGMNLAIRAVARKALSSGLEAYGINYGFAGLVAGDIHEFKAADLDDMVSQGGTMLYSARYPEFAQEESQLKGIEQLKKFGIDALVVIGGDGSYHGALRLTEHGYNTIGLPGTIDNDIPFTDFTIGFDTALNTAVDAIDKIRDTAKSHQRVFAVQVMGRNAADIALWAGVASGADAVIAPGFDYDVEAIANKLKKNRANGKDYGIIVIAEGDANSDAAPEFIDQLKQYGDFDARATVIGHVQRGGVPSAKDRVLASKMGAYAVELL
-![](fig/classification.png)
+![](imgs/classification.png)
 An example of interaction in google colab can be found in this notebook [notebooks/classification_use.ipynb](notebooks/classification_use.ipynb)
 
 ## Masked Language Modelling 
