@@ -1,5 +1,8 @@
 # PROTNAME
 
+For more details about results and technical details please see the [report](report.pdf).
+
+
 ![](imgs/diagram.png)
 
 ## Structure 
